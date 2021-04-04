@@ -1,4 +1,4 @@
-package findelement.driverlevel;
+package find.driverlevel;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
