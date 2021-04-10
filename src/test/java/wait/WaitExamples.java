@@ -276,7 +276,7 @@ public class WaitExamples {
         FluentWait<WebDriver> wait = new FluentWait<>(driver)
             .withTimeout(Duration.ofSeconds(timeoutSeconds)) //Set timeout
             .pollingEvery(Duration.ofMillis(100)) //Set query/check/control interval
-            .withMessage("Timeout occured!") //Set timeout message
+            .withMessage("Timeout occurred!") //Set timeout message
             .ignoring(NoSuchElementException.class); //Ignore NoSuchElementException
 
         //ExpectedCondition: Wait until text contains keyword until timeout period and return the whole text
@@ -296,7 +296,7 @@ public class WaitExamples {
         FluentWait<WebDriver> wait = new FluentWait<>(driver)
             .withTimeout(Duration.ofSeconds(timeoutSeconds)) //Set timeout
             .pollingEvery(Duration.ofMillis(100)) //Set query/check/control interval
-            .withMessage("Timeout occured!") //Set timeout message
+            .withMessage("Timeout occurred!") //Set timeout message
             .ignoring(NoSuchElementException.class); //Ignore NoSuchElementException
 
         //Wait until timeout period and when an element is found, then return it.
