@@ -1,4 +1,4 @@
-package Cookies;
+package cookies;
 
 import java.util.Date;
 import org.junit.jupiter.api.MethodOrderer;
