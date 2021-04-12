@@ -1,5 +1,6 @@
 package javascript;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
@@ -22,6 +23,7 @@ public class ExecuteJavascriptExamples {
 
     @BeforeAll
     public void setupTest() {
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         js = (JavascriptExecutor) driver;
     }

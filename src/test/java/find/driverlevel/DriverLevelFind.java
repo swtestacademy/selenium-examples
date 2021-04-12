@@ -3,6 +3,7 @@ package find.driverlevel;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -22,6 +23,7 @@ public class DriverLevelFind {
 
     @BeforeAll
     public void setupTest() {
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
     }
 

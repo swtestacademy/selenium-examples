@@ -1,5 +1,6 @@
 package actions;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import java.io.File;
 import java.time.Duration;
 import java.util.List;
@@ -31,6 +32,7 @@ public class ActionsTests {
 
     @BeforeAll
     public void setupTest() {
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
@@ -185,7 +187,6 @@ public class ActionsTests {
 
         Assertions.assertTrue(driver.findElement(By.cssSelector("div[id='column-b'] header")).getText().equals("A"));
     }
-
 
     @AfterAll
     public void quitDriver() {

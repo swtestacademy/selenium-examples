@@ -1,5 +1,6 @@
 package wait;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import java.time.DayOfWeek;
 import java.time.Duration;
 import java.time.LocalDate;
@@ -28,12 +29,13 @@ public class WaitExamples {
     private WebDriver driver;
     private String    url = "http://demos.telerik.com/aspnet-ajax/ajaxloadingpanel/functionality/explicit-show-hide/defaultcs.aspx";
     LocalDate currentDate = LocalDate.now();
-    DayOfWeek dayOfWeek   = currentDate.getDayOfWeek();
     Month     month       = currentDate.getMonth();
     int       year        = currentDate.getYear();
+    DayOfWeek dayOfWeek   = LocalDate.of(year, month, 3).getDayOfWeek();
 
     @BeforeEach
     public void setupTest() {
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.navigate().to(url);
         driver.manage().window().maximize();

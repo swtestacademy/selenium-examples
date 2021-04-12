@@ -1,5 +1,6 @@
 package frames;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
@@ -20,6 +21,7 @@ public class Frames {
 
     @BeforeAll
     public void setupTest() {
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.navigate().to("http://www.londonfreelance.org/courses/frames/index.html");
         driver.manage().window().maximize();

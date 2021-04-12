@@ -1,5 +1,6 @@
 package cookies;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -21,6 +22,7 @@ public class CookieExample {
 
     @BeforeAll
     public void setupTest() {
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.navigate().to(url);
         driver.manage().window().maximize();

@@ -1,5 +1,6 @@
 package wait;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import java.time.Duration;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
@@ -22,6 +23,7 @@ public class ImplicitWaitExample {
     //Setup Driver
     @BeforeAll
     public void setupTest() {
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.navigate().to(url);
         driver.manage().window().maximize();

@@ -1,5 +1,6 @@
 package find;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import java.util.List;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
@@ -21,6 +22,7 @@ public class FindElements {
 
     @BeforeAll
     public void setupTest() {
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.navigate().to(baseURL + "/login");
     }
