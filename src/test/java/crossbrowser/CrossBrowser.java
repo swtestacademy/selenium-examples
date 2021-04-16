@@ -71,7 +71,7 @@ public class CrossBrowser {
     @SneakyThrows
     public void T03_HtmlUnitDriverTest() {
         //Instantiate driver and open the page
-        WebClient webClient = new WebClient();
+        webClient = new WebClient();
         //Disable JavaScript processing for one WebClient,
         webClient.getOptions().setJavaScriptEnabled(false);
         webClient.getPage("http://www.swtestacademy.com");
