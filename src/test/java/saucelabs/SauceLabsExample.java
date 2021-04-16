@@ -67,7 +67,6 @@ public class SauceLabsExample {
 
 
         driver = new RemoteWebDriver(new URL(sauceURL), capabilities);
-        /** Don't forget to enter in your application's URL in place of 'https://www.saucedemo.com'. */
         driver.navigate().to("https://www.swtestacademy.com");
         assertTrue(driver.getTitle().contains("Software Test Academy"));
     }
