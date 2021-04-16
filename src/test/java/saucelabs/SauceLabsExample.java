@@ -51,7 +51,7 @@ public class SauceLabsExample {
         sauceOpts.setCapability("idleTimeout", 1000);
 
         //Setting a build name
-        sauceOpts.setCapability("build", "SW Test Academy Sauce Example - Java-Junit5");
+        sauceOpts.setCapability("build", "SW Test Academy Sauce Example - Java - Junit5");
 
         //Required to set w3c protocol
         ChromeOptions chromeOpts = new ChromeOptions();
