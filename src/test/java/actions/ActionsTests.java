@@ -102,8 +102,8 @@ public class ActionsTests {
         submitButton.click();
 
         //Check the result
-        WebElement resultSecondLine = wait.until(
-            ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='w3-container w3-large w3-border']")));
+        WebElement resultSecondLine = wait.until(driver ->
+            ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='w3-container w3-large w3-border']")).apply(driver));
         System.out.println("ResultText: " + resultSecondLine.getText());
         Assertions.assertTrue(resultSecondLine.getText().contains("volvo"), "volvo is not selected!");
         Assertions.assertTrue(resultSecondLine.getText().contains("opel"), "opel is not selected!");
@@ -163,8 +163,8 @@ public class ActionsTests {
         submitButton.click();
 
         //Check the result
-        WebElement resultText = wait.until(
-            ExpectedConditions.visibilityOfElementLocated(By.cssSelector("body > div.w3-container.w3-large.w3-border")));
+        WebElement resultText = wait.until(driver ->
+            ExpectedConditions.visibilityOfElementLocated(By.cssSelector("body > div.w3-container.w3-large.w3-border")).apply(driver));
         System.out.println("resulttext: " + resultText.getText());
         Assertions.assertTrue(resultText.getText().contains("test.properties"), "test.properties is not submitted!");
     }

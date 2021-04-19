@@ -71,7 +71,8 @@ public class WaitExamples {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         //Wait until presence of container
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".demo-container.size-narrow")));
+        wait.until(
+            driver -> ExpectedConditions.presenceOfElementLocated(By.cssSelector(".demo-container.size-narrow")).apply(driver));
 
         //Get the selected date text before AJAX call
         String selectedDateTextBeforeAjaxCall = driver.findElement(By.cssSelector("#ctl00_ContentPlaceholder1_Label1")).getText().trim();
@@ -86,12 +87,13 @@ public class WaitExamples {
         thirdDayOfMonth.click();
 
         //Wait until invisibility of loader
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".raDiv")));
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(
+            driver -> ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".raDiv")).apply(driver));
 
         //Wait until visibility of selected date text
         //Actually it is not necessary, I added this control to see an example of visibilityOfElementLocated usage.
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(
-            ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#ctl00_ContentPlaceholder1_Label1")));
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(driver ->
+            ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#ctl00_ContentPlaceholder1_Label1")).apply(driver));
 
         //Find Selected Dates Text
         String selectedDateTextAfterAjaxCall = driver.findElement(By.cssSelector("#ctl00_ContentPlaceholder1_Label1")).getText().trim();
@@ -109,7 +111,7 @@ public class WaitExamples {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         //Wait until presence of container
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".demo-container.size-narrow")));
+        wait.until(driver -> ExpectedConditions.presenceOfElementLocated(By.cssSelector(".demo-container.size-narrow")).apply(driver));
 
         //Get the selected date text before AJAX call
         String selectedDateTextBeforeAjaxCall = driver.findElement(By.cssSelector("#ctl00_ContentPlaceholder1_Label1")).getText().trim();
@@ -124,7 +126,8 @@ public class WaitExamples {
         thirdDayOfMonth.click();
 
         //This time we are using custom ExpectedCondition
-        wait.until(new ElementContainsText(By.cssSelector("#ctl00_ContentPlaceholder1_Label1"), String.valueOf(year)));
+        wait.until(
+            driver -> new ElementContainsText(By.cssSelector("#ctl00_ContentPlaceholder1_Label1"), String.valueOf(year)).apply(driver));
 
         //Find Selected Dates Text
         String selectedDateTextAfterAjaxCall = driver.findElement(By.cssSelector("#ctl00_ContentPlaceholder1_Label1")).getText().trim();
@@ -142,7 +145,7 @@ public class WaitExamples {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         //Wait until presence of container
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".demo-container.size-narrow")));
+        wait.until(driver -> ExpectedConditions.presenceOfElementLocated(By.cssSelector(".demo-container.size-narrow")).apply(driver));
 
         //Get the selected date text before AJAX call
         String selectedDateTextBeforeAjaxCall = driver.findElement(By.cssSelector("#ctl00_ContentPlaceholder1_Label1")).getText().trim();
@@ -157,9 +160,7 @@ public class WaitExamples {
         thirdOfJanuary.click();
 
         //AdHoc Wait with Anonymous Class (Synchronization)
-        wait.until((ExpectedCondition<Boolean>) webDriver -> {
-            return webDriver.findElement(By.cssSelector("#ctl00_ContentPlaceholder1_Label1")).getText().contains(String.valueOf(year));
-        });
+        wait.until(webDriver -> webDriver.findElement(By.cssSelector("#ctl00_ContentPlaceholder1_Label1")).getText().contains(String.valueOf(year)));
 
         //Find Selected Dates Text
         String selectedDateTextAfterAjaxCall = driver.findElement(
@@ -178,7 +179,7 @@ public class WaitExamples {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         //Wait until presence of container
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".demo-container.size-narrow")));
+        wait.until(driver -> ExpectedConditions.presenceOfElementLocated(By.cssSelector(".demo-container.size-narrow")).apply(driver));
 
         //Get the selected date text before AJAX call
         String selectedDateTextBeforeAjaxCall = driver.findElement(By.cssSelector("#ctl00_ContentPlaceholder1_Label1")).getText().trim();
@@ -193,7 +194,7 @@ public class WaitExamples {
         thirdDayOfMonth.click();
 
         //Wrapped Anonymous Class (Synchronization)
-        wait.until(textDisplayed(By.cssSelector("#ctl00_ContentPlaceholder1_Label1"), String.valueOf(year)));
+        wait.until(driver -> textDisplayed(By.cssSelector("#ctl00_ContentPlaceholder1_Label1"), String.valueOf(year)).apply(driver));
 
         //Find Selected Dates Text
         String selectedDateTextAfterAjaxCall = driver.findElement(By.cssSelector("#ctl00_ContentPlaceholder1_Label1")).getText().trim();
@@ -227,7 +228,7 @@ public class WaitExamples {
         //It will wait until period time and checks the given locator's text contains year
         //If it contains then it will return whole text
         By locator = By.cssSelector("#ctl00_ContentPlaceholder1_Label1");
-        String selectedDateAfterAjaxCall = textContainsKeyword(driver, locator, 10, String.valueOf(year));
+        String selectedDateAfterAjaxCall = textContainsKeyword(driver, locator, 20, String.valueOf(year));
 
         //Print selectedDateTextAfterAjaxCall to the console
         System.out.println("selectedDateTextAfterAjaxCall: " + selectedDateAfterAjaxCall + "\n");
@@ -277,13 +278,13 @@ public class WaitExamples {
         //FluentWait Declaration
         FluentWait<WebDriver> wait = new FluentWait<>(driver)
             .withTimeout(Duration.ofSeconds(timeoutSeconds)) //Set timeout
-            .pollingEvery(Duration.ofMillis(100)) //Set query/check/control interval
+            .pollingEvery(Duration.ofMillis(500)) //Set query/check/control interval
             .withMessage("Timeout occurred!") //Set timeout message
             .ignoring(NoSuchElementException.class); //Ignore NoSuchElementException
 
         //ExpectedCondition: Wait until text contains keyword until timeout period and return the whole text
         //If text does not contains keyword until timeout period, return null.
-        return wait.until((ExpectedCondition<String>) webDriver -> {
+        return wait.until(webDriver -> {
             if (webDriver.findElement(locator).getText().contains(keyword)) {
                 return webDriver.findElement(locator).getText();
             } else {
