@@ -32,7 +32,7 @@ public class ExecuteAsyncJavascriptExamples {
     @Test
     public void T01_browserSleepExampleTest() {
         //Set ScriptTimeout
-        driver.manage().timeouts().setScriptTimeout(Duration.ofSeconds(10));
+        driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(10));
 
         //Declare and set start time
         long startTime = System.currentTimeMillis();
@@ -53,7 +53,7 @@ public void T02_sendXMLHTTPRequestTest() {
     Object response = null;
 
     //Set ScriptTimeout
-    driver.manage().timeouts().setScriptTimeout(Duration.ofSeconds(10));
+    driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(10));
 
     //Declare JavascriptExecutor
     JavascriptExecutor js = (JavascriptExecutor) driver;

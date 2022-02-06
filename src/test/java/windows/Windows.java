@@ -59,9 +59,9 @@ public void T01_SwitchToWindows() {
     //7) Get the current window's handle and write to the console window. It must be second window handle.
     System.out.println("Current Window Handle: " + driver.getWindowHandle() + "\n");
 
-    //8) Check the upper left side text is "THE WORLD'S LARGEST WEB DEVELOPER SITE" in second window
-    WebElement expectedText = driver.findElement(By.cssSelector(".w3-right.toptext.w3-wide"));
-    Assertions.assertEquals("THE WORLD'S LARGEST WEB DEVELOPER SITE", expectedText.getText());
+    //8) Check the upper left side logo
+    WebElement logo = driver.findElement(By.cssSelector(".fa.fa-logo"));
+    Assertions.assertTrue(logo.isDisplayed());
 
     //9) Go back (Switch) to first window
     driver.switchTo().window(windowHandlesList.get(0));
@@ -71,7 +71,7 @@ public void T01_SwitchToWindows() {
 
     //11) Check the Run Button Text
     WebElement seeResultButton = driver.findElement(By.cssSelector("button[onclick*='submitTryit(1)'"));
-    Assertions.assertTrue(seeResultButton.getText().contains("Run »"));
+    Assertions.assertTrue(seeResultButton.getText().contains("Run ❯"));
 }
 
 @Test
