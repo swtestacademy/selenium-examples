@@ -283,7 +283,7 @@ public class WaitExamples {
             .ignoring(NoSuchElementException.class); //Ignore NoSuchElementException
 
         //ExpectedCondition: Wait until text contains keyword until timeout period and return the whole text
-        //If text does not contains keyword until timeout period, return null.
+        //If text does not contain keyword until timeout period, return null.
         return wait.until(webDriver -> {
             if (webDriver.findElement(locator).getText().contains(keyword)) {
                 return webDriver.findElement(locator).getText();
