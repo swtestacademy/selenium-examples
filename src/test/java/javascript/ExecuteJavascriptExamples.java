@@ -1,6 +1,7 @@
 package javascript;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import java.time.Duration;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
@@ -14,17 +15,21 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(MethodOrderer.MethodName.class)
 public class ExecuteJavascriptExamples {
     private WebDriver          driver;
+    private WebDriverWait      wait;
     private JavascriptExecutor js;
 
     @BeforeAll
     public void setupTest() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         js = (JavascriptExecutor) driver;
     }
 
@@ -69,9 +74,12 @@ public class ExecuteJavascriptExamples {
         js.executeScript("history.go(0);");
         Thread.sleep(1000);
 
+        //Goto Blog Page
+        ExpectedConditions.visibilityOfElementLocated(By.xpath("//div//ul//li//a[contains(@href, 'blog')]")).apply(driver).click();
+
         //JS Scroll
-        WebElement secondArticle = driver.findElement(By.cssSelector("div>article:nth-of-type(2)"));
-        WebElement twelfthArticle = driver.findElement(By.xpath("//div/article[12]"));
+        WebElement secondArticle = driver.findElement(By.cssSelector("article:nth-of-type(2)"));
+        WebElement twelfthArticle = driver.findElement(By.xpath("//article[12]"));
         js.executeScript("arguments[0].scrollIntoView(true);", twelfthArticle);
         Thread.sleep(1000);
         js.executeScript("arguments[0].scrollIntoView(true);", secondArticle);
@@ -81,17 +89,20 @@ public class ExecuteJavascriptExamples {
         Thread.sleep(1000);
 
         //JS hide an element
-        js.executeScript("document.querySelector('div>article:nth-of-type(2)').style.display='none'");
+        js.executeScript("document.querySelector('article:nth-of-type(2)').style.display='none'");
         Thread.sleep(1000);
 
         //JS show an element
-        js.executeScript("document.querySelector('div>article:nth-of-type(2)').style.display='block'");
+        js.executeScript("document.querySelector('article:nth-of-type(2)').style.display='block'");
         Thread.sleep(1000);
 
         //JS click and type text
-        js.executeScript("arguments[0].click();", driver.findElement(By.cssSelector("ul#menu-main  a[role='button']")));
-        js.executeScript("document.querySelector('.fusion-custom-menu-item-contents .s').value = 'SW Test Academy'");
-        Thread.sleep(1000);
+        WebElement logo = driver.findElement(By.cssSelector(".header-image.is-logo-image"));
+        WebElement searchBox = driver.findElement(By.cssSelector("form > label > input"));
+        js.executeScript("arguments[0].scrollIntoView(true);", logo);
+        js.executeScript("arguments[0].click();", searchBox);
+        js.executeScript("document.querySelector('form > label > input').value = 'SW Test Academy'");
+        Thread.sleep(3000);
 
         //JS Navigate to Other Page
         js.executeScript("window.location = 'https://www.swtestacademy.com/'");
