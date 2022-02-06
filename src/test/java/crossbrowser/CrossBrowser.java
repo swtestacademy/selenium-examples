@@ -7,7 +7,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import java.util.Optional;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -80,7 +79,6 @@ public class CrossBrowser {
     }
 
     @Test
-    @Disabled("It has some problems.")
     public void T04_PhantomJSTest() {
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability("phantomjs.binary.path", "/usr/local/bin/phantomjs");
