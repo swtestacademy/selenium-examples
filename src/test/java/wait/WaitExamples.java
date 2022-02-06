@@ -50,7 +50,7 @@ public class WaitExamples {
         System.out.println("selectedDateTextBeforeAjaxCall: " + selectedDateTextBeforeAjaxCall + "\n");
 
         //Find 3rd Day on the calendar
-        WebElement thirdDayOfMonth = driver.findElement(By.xpath(".//*[contains(@class, 'rcWeekend')]/a[.='3']"));
+        WebElement thirdDayOfMonth = driver.findElement(By.xpath(".//*[contains(@class, 'rcRow')]/td/a[.='3']"));
 
         //Click 3rd Day
         thirdDayOfMonth.click();
@@ -81,7 +81,7 @@ public class WaitExamples {
         System.out.println("selectedDateTextBeforeAjaxCall: " + selectedDateTextBeforeAjaxCall + "\n");
 
         //Find 3rd Day on the calendar
-        WebElement thirdDayOfMonth = driver.findElement(By.xpath(".//*[contains(@class, 'rcWeekend')]/a[.='3']"));
+        WebElement thirdDayOfMonth = driver.findElement(By.xpath(".//*[contains(@class, 'rcRow')]/td/a[.='3']"));
 
         //Click 3rd Day
         thirdDayOfMonth.click();
@@ -120,7 +120,7 @@ public class WaitExamples {
         System.out.println("selectedDateTextBeforeAjaxCall: " + selectedDateTextBeforeAjaxCall + "\n");
 
         //Find 3rd January on the calendar
-        WebElement thirdDayOfMonth = driver.findElement(By.xpath(".//*[contains(@class, 'rcWeekend')]/a[.='3']"));
+        WebElement thirdDayOfMonth = driver.findElement(By.xpath(".//*[contains(@class, 'rcRow')]/td/a[.='3']"));
 
         //Click 3rd Day
         thirdDayOfMonth.click();
@@ -154,7 +154,7 @@ public class WaitExamples {
         System.out.println("selectedDateTextBeforeAjaxCall: " + selectedDateTextBeforeAjaxCall + "\n");
 
         //Find 3rd Day of the month on the calendar
-        WebElement thirdOfJanuary = driver.findElement(By.xpath(".//*[contains(@class, 'rcWeekend')]/a[.='3']"));
+        WebElement thirdOfJanuary = driver.findElement(By.xpath(".//*[contains(@class, 'rcRow')]/td/a[.='3']"));
 
         //Click 3rd of Month
         thirdOfJanuary.click();
@@ -188,7 +188,7 @@ public class WaitExamples {
         System.out.println("selectedDateTextBeforeAjaxCall: " + selectedDateTextBeforeAjaxCall + "\n");
 
         //Find Day of the Month on the calendar
-        WebElement thirdDayOfMonth = driver.findElement(By.xpath(".//*[contains(@class, 'rcWeekend')]/a[.='3']"));
+        WebElement thirdDayOfMonth = driver.findElement(By.xpath(".//*[contains(@class, 'rcRow')]/td/a[.='3']"));
 
         //Click 3rd Day of the month
         thirdDayOfMonth.click();
@@ -219,7 +219,7 @@ public class WaitExamples {
 
         //Find 3rd Day on the calendar with findElement method which
         //comprises FluentWait implementation and returns Web element.
-        WebElement thirdDayOfMonth = findElement(driver, By.xpath(".//*[contains(@class, 'rcWeekend')]/a[.='3']"), 5);
+        WebElement thirdDayOfMonth = findElement(driver, By.xpath(".//*[contains(@class, 'rcRow')]/td/a[.='3']"), 5);
 
         //Click 3rd Day
         thirdDayOfMonth.click();

@@ -34,7 +34,7 @@ public class CrossBrowser {
 
     @Test
     public void T01_FirefoxTest() {
-        WebDriverManager.firefoxdriver().setup();
+        //WebDriverManager.firefoxdriver().setup(); //Rather than webdriver manager, I used local gecko driver.
         //Create a new Profile
         FirefoxProfile profile = new FirefoxProfile();
         FirefoxOptions options = new FirefoxOptions();
@@ -48,13 +48,12 @@ public class CrossBrowser {
     @Test
     public void T02_DesiredCapabilitiesTest() {
         //Setup Firefox Driver by Bonigarcia Library.
-        WebDriverManager.firefoxdriver().setup();
+        //WebDriverManager.firefoxdriver().setup(); //Rather than webdriver manager, I used local gecko driver.
 
         //Setup Proxy
         String httpProxy = "127.0.0.1:8080";
         Proxy seleniumProxy = new org.openqa.selenium.Proxy();
         seleniumProxy.setHttpProxy(httpProxy)
-            .setFtpProxy(httpProxy)
             .setSslProxy(httpProxy);
 
         //Create Desired Capabilities
