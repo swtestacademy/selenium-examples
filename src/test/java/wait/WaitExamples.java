@@ -224,7 +224,7 @@ public class WaitExamples {
         //Click 3rd Day
         thirdDayOfMonth.click();
 
-        //Call method which comprises of FluentWait implementation
+        //Call method which comprises FluentWait implementation
         //It will wait until period time and checks the given locator's text contains year
         //If it contains then it will return whole text
         By locator = By.cssSelector("#ctl00_ContentPlaceholder1_Label1");
