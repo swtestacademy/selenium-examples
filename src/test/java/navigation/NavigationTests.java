@@ -2,9 +2,9 @@ package navigation;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.time.Duration;
-import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -22,11 +22,16 @@ public class NavigationTests {
     final private String        URL1 = "http://www.yahoo.com";
     final private String        URL2 = "http://www.amazon.com";
 
-    @BeforeAll
+    @BeforeEach
     public void setupTest() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    }
+
+    @AfterEach
+    public void quitDriver() {
+        driver.quit();
     }
 
     //.get Example
@@ -80,10 +85,5 @@ public class NavigationTests {
         driver.navigate().refresh();
         wait.until(driver -> driver.getTitle().contentEquals("Amazon.com. Spend less. Smile more."));
         Assertions.assertEquals("Amazon.com. Spend less. Smile more.", driver.getTitle());
-    }
-
-    @AfterAll
-    public void quitDriver() {
-        driver.quit();
     }
 }
